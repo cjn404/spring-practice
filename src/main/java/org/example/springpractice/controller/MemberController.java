@@ -25,14 +25,14 @@ public class MemberController {
     public List<MemberResponse> getMembers() {
         return memberService.findMembers();}
 
-    @GetMapping("/member/{memberId}")
+    @GetMapping("/members/{memberId}")
     public MemberResponse getMember(
             @PathVariable Long memberId
     ) {
         return memberService.findMember(memberId);
     }
 
-    @PutMapping("/member/{memberId}")
+    @PutMapping("/members/{memberId}")
     public MemberResponse updateMember(
             @PathVariable Long memberId,
             @RequestBody MemberRequest memberRequest
@@ -40,7 +40,7 @@ public class MemberController {
         return memberService.update(memberId, memberRequest);
     }
 
-    @DeleteMapping("/member/{memberId}")
+    @DeleteMapping("/members/{memberId}")
     public void deleteMember(
             @PathVariable Long memberId
     ) {
