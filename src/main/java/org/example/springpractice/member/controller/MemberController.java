@@ -1,9 +1,9 @@
-package org.example.springpractice.controller;
+package org.example.springpractice.member.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.springpractice.dto.MemberRequest;
-import org.example.springpractice.dto.MemberResponse;
-import org.example.springpractice.service.MemberService;
+import org.example.springpractice.member.dto.MemberRequest;
+import org.example.springpractice.member.dto.MemberResponse;
+import org.example.springpractice.member.service.MemberService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

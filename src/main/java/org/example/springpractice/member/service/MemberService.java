@@ -1,14 +1,13 @@
-package org.example.springpractice.service;
+package org.example.springpractice.member.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.springpractice.dto.MemberRequest;
-import org.example.springpractice.dto.MemberResponse;
-import org.example.springpractice.entity.Member;
-import org.example.springpractice.repository.MemberRepository;
+import org.example.springpractice.member.dto.MemberRequest;
+import org.example.springpractice.member.dto.MemberResponse;
+import org.example.springpractice.member.entity.Member;
+import org.example.springpractice.member.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 

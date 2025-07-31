@@ -1,4 +1,4 @@
-package org.example.springpractice.dto;
+package org.example.springpractice.member.dto;
 
 import lombok.Getter;
 
