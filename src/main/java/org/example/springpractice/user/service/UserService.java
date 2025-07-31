@@ -58,7 +58,7 @@ public class UserService {
     @Transactional
     public void deleteUser(Long userId) {
         boolean b = userRepository.existsById(userId);
-        if (b) {
+        if (!b) {
             throw new IllegalArgumentException("해당하는 UserID는 없습니다.");
         }
         memberRepository.deleteById(userId);
