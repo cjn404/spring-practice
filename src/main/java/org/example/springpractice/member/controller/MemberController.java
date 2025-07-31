@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.springpractice.member.dto.MemberRequest;
 import org.example.springpractice.member.dto.MemberResponse;
 import org.example.springpractice.member.service.MemberService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,36 +16,38 @@ public class MemberController {
     private final MemberService memberService;
 
     @PostMapping("/members")
-    public MemberResponse createMember(
+    public ResponseEntity<MemberResponse> createMember(
             @RequestBody MemberRequest memberRequest
     ) {
-        return memberService.save(memberRequest);
+        return ResponseEntity.ok(memberService.save(memberRequest));
     }
 
     @GetMapping("/members")
-    public List<MemberResponse> getMembers() {
-        return memberService.findMembers();}
+    public ResponseEntity<List<MemberResponse>> getMembers() {
+        return ResponseEntity.ok(memberService.findMembers());
+    }
 
     @GetMapping("/members/{memberId}")
-    public MemberResponse getMember(
+    public ResponseEntity<MemberResponse> getMember(
             @PathVariable Long memberId
     ) {
-        return memberService.findMember(memberId);
+        return ResponseEntity.ok(memberService.findMember(memberId));
     }
 
     @PutMapping("/members/{memberId}")
-    public MemberResponse updateMember(
+    public ResponseEntity<MemberResponse> updateMember(
             @PathVariable Long memberId,
             @RequestBody MemberRequest memberRequest
     ) {
-        return memberService.update(memberId, memberRequest);
+        return ResponseEntity.ok(memberService.update(memberId, memberRequest));
     }
 
     @DeleteMapping("/members/{memberId}")
-    public void deleteMember(
+    public ResponseEntity<Void> deleteMember(
             @PathVariable Long memberId
     ) {
         memberService.deleteMember(memberId);
+        return ResponseEntity.ok().build();
     }
 
 }
