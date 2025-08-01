@@ -27,7 +27,7 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public List<UserResponse> finduUsers() {
+    public List<UserResponse> findUsers() {
         List<User> users = userRepository.findAll();
         List<UserResponse> dtos = new ArrayList<>();
 
