@@ -3,7 +3,6 @@ package org.example.springpractice.user.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.springpractice.user.dto.UserRequest;
 import org.example.springpractice.user.dto.UserResponse;
-import org.example.springpractice.user.repository.UserRepository;
 import org.example.springpractice.user.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
