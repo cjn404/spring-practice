@@ -61,7 +61,7 @@ public class UserService {
         if (!b) {
             throw new IllegalArgumentException("해당하는 UserID는 없습니다.");
         }
-        memberRepository.deleteById(userId);
+        userRepository.deleteById(userId);
     }
 
     @Transactional(readOnly = true)
