@@ -3,7 +3,6 @@ package org.example.springpractice.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.springpractice.dto.ReviewRequest;
 import org.example.springpractice.dto.ReviewResponse;
-import org.example.springpractice.entity.Review;
 import org.example.springpractice.service.ReviewService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
