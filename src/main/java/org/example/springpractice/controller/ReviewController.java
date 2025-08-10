@@ -23,10 +23,10 @@ public class ReviewController {
         return ResponseEntity.ok(reviewService.save(request, movieId));
     }
 
-    @GetMapping("/movies/{moviesId}/reviews")
+    @GetMapping("/movies/{movieId}/reviews")
     public ResponseEntity<List<ReviewResponse>> findAllReviews(
-            @PathVariable Long moviesId
+            @PathVariable Long movieId
     ) {
-        return ResponseEntity.ok(reviewService.findAll(moviesId));
+        return ResponseEntity.ok(reviewService.findAll(movieId));
     }
 }
