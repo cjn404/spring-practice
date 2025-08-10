@@ -20,4 +20,8 @@ public class Movie {
     public Movie(String title) {
         this.title = title;
     }
+
+    public void updatedMovie(String title) {
+        this.title = title;
+    }
 }

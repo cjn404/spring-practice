@@ -5,10 +5,7 @@ import org.example.springpractice.dto.MovieRequest;
 import org.example.springpractice.dto.MovieResponse;
 import org.example.springpractice.service.MovieService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,20 @@ public class MovieController {
     @GetMapping("/movies")
     public ResponseEntity<List<MovieResponse>> findAllMovies() {
         return ResponseEntity.ok(movieService.findAll());
+    }
+
+    @GetMapping("/movies/{movieId}")
+    public ResponseEntity<MovieResponse> findOneMovie(
+            @PathVariable Long movieId
+    ) {
+        return ResponseEntity.ok(movieService.findOne(movieId));
+    }
+
+    @PatchMapping("/movies/{movieId}")
+    public ResponseEntity<MovieResponse> updateMovie(
+            @PathVariable Long movieId,
+            @RequestBody MovieRequest request
+    ) {
+        return ResponseEntity.ok(movieService.updateMovie(movieId, request));
     }
 }

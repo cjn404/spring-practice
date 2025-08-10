@@ -49,4 +49,21 @@ public class MovieService {
                         movie.getTitle()
                 )).toList();
     }
+
+    @Transactional(readOnly = true)
+    public MovieResponse findOne(Long movieId) {
+        Movie movie = movieRepository.findById(movieId).orElseThrow(
+                () -> new IllegalArgumentException("Movie not found with id")
+        );
+        return new MovieResponse(movie.getId(), movie.getTitle());
+    }
+
+    @Transactional
+    public MovieResponse updateMovie(Long movieId, MovieRequest request) {
+        Movie movie = movieRepository.findById(movieId).orElseThrow(
+                () -> new IllegalArgumentException("Movie not found with id")
+        );
+        movie.updatedMovie(request.getTitle());
+        return new MovieResponse(movie.getId(), movie.getTitle());
+    }
 }
