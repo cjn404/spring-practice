@@ -32,7 +32,7 @@ public class ReviewService {
         Review savedReview = reviewRepository.save(review);
         return new ReviewResponse(
                 savedReview.getId(),
-                movie.getTitle(),
+                review.getMovie().getTitle(),
                 savedReview.getContent()
         );
     }
