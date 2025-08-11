@@ -18,9 +18,9 @@ public class Review {
     @JoinColumn(name = "movie_id", nullable = false)
     private Movie movie;
 
-    public Review(String content, Movie movie) {
-        this.content = content;
+    public Review(Movie movie, String content) {
         this.movie = movie;
+        this.content = content;
     }
 
     public void updateReview(String content) {

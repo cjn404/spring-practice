@@ -20,7 +20,7 @@ public class ReviewController {
             @PathVariable Long movieId,
             @RequestBody ReviewRequest request
     ) {
-        return ResponseEntity.ok(reviewService.save(request, movieId));
+        return ResponseEntity.ok(reviewService.save(movieId, request));
     }
 
     @GetMapping("/movies/{movieId}/reviews")
@@ -31,7 +31,7 @@ public class ReviewController {
     }
 
     @GetMapping("/movies/{movieId}/reviews/{reviewId}")
-    public ResponseEntity<ReviewResponse> findReview(
+    public ResponseEntity<ReviewResponse> findOneReview(
             @PathVariable Long movieId,
             @PathVariable Long reviewId
     ) {
@@ -44,6 +44,6 @@ public class ReviewController {
             @PathVariable Long reviewId,
             @RequestBody ReviewRequest request
     ) {
-        return ResponseEntity.ok(reviewService.updateReview(reviewId, request));
+        return ResponseEntity.ok(reviewService.updateReview(movieId, reviewId, request));
     }
 }

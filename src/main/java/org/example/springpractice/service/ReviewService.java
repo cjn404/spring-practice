@@ -17,17 +17,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ReviewService {
 
-    public final ReviewRepository reviewRepository;
-    public final MovieRepository movieRepository;
+    private final ReviewRepository reviewRepository;
+    private final MovieRepository movieRepository;
 
     @Transactional
-    public ReviewResponse save(ReviewRequest request, Long movieId) {
+    public ReviewResponse save(Long movieId, ReviewRequest request) {
         Movie movie = movieRepository.findById(movieId).orElseThrow(
                 ()->new IllegalArgumentException("해당 movieId의 movie는 없습니다.")
         );
         Review review = new Review(
-                request.getContent(),
-                movie
+                movie,
+                request.getContent()
         );
         Review savedReview = reviewRepository.save(review);
         return new ReviewResponse(
@@ -55,15 +55,15 @@ public class ReviewService {
                     )
             );
         }
-        return dtos;
-
         // stream
 //        return reviews.stream()
 //                .map(review -> new ReviewResponse(
 //                        review.getId(),
 //                        review.getMovie().getTitle()
-//                        review.getContent(),
+//                        review.getContent()
 //                )).toList();
+
+        return dtos;
     }
 
     @Transactional(readOnly = true)
@@ -78,8 +78,8 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewResponse updateReview(Long reviewId, ReviewRequest request) {
-        Review review = reviewRepository.findById(reviewId).orElseThrow(
+    public ReviewResponse updateReview(Long movieId, Long reviewId, ReviewRequest request) {
+        Review review = reviewRepository.findByMovieIdAndId(movieId, reviewId).orElseThrow(
                 () -> new IllegalArgumentException("Review not found with id")
         );
         review.updateReview(request.getContent());
