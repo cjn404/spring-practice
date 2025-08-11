@@ -24,7 +24,7 @@ public class ReviewController {
     }
 
     @GetMapping("/movies/{movieId}/reviews")
-    public ResponseEntity<List<ReviewResponse>> findAllReview(
+    public ResponseEntity<List<ReviewResponse>> findAllReviews(
             @PathVariable Long movieId
     ) {
         return ResponseEntity.ok(reviewService.findAll(movieId));

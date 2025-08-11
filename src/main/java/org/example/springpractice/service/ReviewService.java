@@ -67,7 +67,7 @@ public class ReviewService {
     @Transactional(readOnly = true)
     public ReviewResponse findOne(Long movieId, Long reviewId) {
         Review review = reviewRepository.findByMovieIdAndId(movieId, reviewId).orElseThrow(
-                () -> new IllegalArgumentException("Movie not found with id")
+                () -> new IllegalArgumentException("Review not found with id")
         );
         return new ReviewResponse(
                 review.getId(),
@@ -78,7 +78,7 @@ public class ReviewService {
     @Transactional
     public ReviewResponse updateReview(Long movieId, Long reviewId, ReviewRequest request) {
         Review review = reviewRepository.findByMovieIdAndId(movieId, reviewId).orElseThrow(
-                () -> new IllegalArgumentException("Movie not found with id")
+                () -> new IllegalArgumentException("Review not found with id")
         );
         review.updateReview(request.getContent());
         return new ReviewResponse(
