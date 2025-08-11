@@ -1,0 +1,29 @@
+package org.example.springpractice.entity;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Getter
+@NoArgsConstructor
+public class Review {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String content;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "movie_id", nullable = false)
+    private Movie movie;
+
+    public Review(Movie movie,String content) {
+        this.movie = movie;
+        this.content = content;
+    }
+
+    public void updateReview(String content) {
+        this.content = content;
+    }
+}
